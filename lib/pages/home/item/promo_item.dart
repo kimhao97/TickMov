@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:move_ticketing/app_define/app_assets.dart';
 import 'package:move_ticketing/app_define/app_color.dart';
 
-class PromoCell extends StatefulWidget {
-  const PromoCell({Key? key}) : super(key: key);
+class PromoItem extends StatefulWidget {
+  const PromoItem({Key? key}) : super(key: key);
 
   @override
-  State<PromoCell> createState() => _PromoCellState();
+  State<PromoItem> createState() => _PromoItemState();
 }
 
-class _PromoCellState extends State<PromoCell> {
+class _PromoItemState extends State<PromoItem> {
   List<String> pageList = ['PageView1', 'PageView2', 'PageView3', 'PageView4', 'PageView5'];
   int _currentPageIndex = 0;
 

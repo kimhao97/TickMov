@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:move_ticketing/app_define/app_assets.dart';
 import 'package:move_ticketing/app_define/app_color.dart';
 
-class DescriptionCell extends StatelessWidget {
-  const DescriptionCell({Key? key}) : super(key: key);
+class DescriptionItem extends StatelessWidget {
+  const DescriptionItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class DescriptionCell extends StatelessWidget {
 
               children: [
                 Expanded(child: SizedBox()),
-                Image.asset("assets/icons/star.png"),
+                Image.asset(AppAssets.origin().icStar),
                 Text(
                     "8,9",
                   style: TextStyle(

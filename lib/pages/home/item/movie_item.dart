@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:move_ticketing/app_define/app_assets.dart';
 import 'package:move_ticketing/app_define/app_color.dart';
+import 'package:move_ticketing/utils/constants/api_constants.dart';
 import '../../../network/entity/movie_entity.dart';
 
-class MovieCell extends StatelessWidget {
-  final int index;
+class MovieItem extends StatelessWidget {
   final MovieEntity movie;
-  // MovieCell({required this.index}); ??
-  MovieCell(this.index, this.movie);
+  MovieItem({required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class MovieCell extends StatelessWidget {
                 width: double.infinity,
                 color: Colors.white,
                 child: Image.network(
-                  "https://image.tmdb.org/t/p/w500${movie.imageUrl}",
+                  "${APIConstants.IAMGE_URL}${movie.imageUrl}",
                   fit: BoxFit.cover,
                 ),
               ),

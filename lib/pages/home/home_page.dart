@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:move_ticketing/network/providers/movie_provider.dart';
-import 'package:move_ticketing/pages/home/cell/promo_cell.dart';
-import 'cell/movie_cell.dart';
+import 'package:move_ticketing/pages/home/item/promo_item.dart';
+import 'item/movie_item.dart';
 import 'package:provider/provider.dart';
 import 'package:move_ticketing/app_define/app_style.dart';
 
@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Consumer<MovieProvider>(
       builder: (BuildContext context, MovieProvider provider, _) {
         return ListView(
@@ -60,20 +61,24 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               height: 261.0,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: movieProvider.movies.length,
-                  itemBuilder: (context, index) {
-                    final movie = movieProvider.movies[index];
-                    return MovieCell(index, movie);
-                  }),
+              child: _buildListView(),
             ),
-            // DescriptionCell(),
-            PromoCell(),
+            PromoItem(),
             SizedBox(height: 40.0),
           ],
         );
       },
+    );
+  }
+
+  Widget _buildListView() {
+    return ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: movieProvider.movies.length,
+        itemBuilder: (context, index) {
+          final movie = movieProvider.movies[index];
+          return MovieItem(movie: movie);
+        }
     );
   }
 }
