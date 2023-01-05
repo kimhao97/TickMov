@@ -6,6 +6,7 @@ import 'package:move_ticketing/pages/home/home_page.dart';
 import 'package:move_ticketing/pages/ticket/TicketPage.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 
 void main() => runApp(MaterialApp(
     builder: (context, child) {
@@ -38,55 +39,59 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
       providers: [
         ChangeNotifierProvider(create: (_)=> MovieProvider()),
       ],
-      child:  Scaffold(
-        backgroundColor: AppColors.darkGunmetal,
-        // appBar: AppBar(
-        //   elevation: 20,
-        //   title: const Text(
-        //       "Home",
-        //   ),
-        //   backgroundColor: AppColors.darkGunmetal,
-        // ),
-        bottomNavigationBar: Container(
-          child: SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
-              child: GNav(
-                gap: 8,
-                activeColor: AppColors.white,
-                color: AppColors.grey.withOpacity(0.5),
-                iconSize: 24,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                tabBackgroundColor: AppColors.arsenic,
-                backgroundColor: AppColors.arsenic,
-                tabBorderRadius: 33,
-                tabs: [
-                  GButton(
-                    icon: Icons.home,
-                    text: 'Home',
+      child: Sizer(
+        builder: (context, orientation, deviceType) {
+          return Scaffold(
+            backgroundColor: AppColors.darkGunmetal,
+            // appBar: AppBar(
+            //   elevation: 20,
+            //   title: const Text(
+            //       "Home",
+            //   ),
+            //   backgroundColor: AppColors.darkGunmetal,
+            // ),
+            bottomNavigationBar: Container(
+              child: SafeArea(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+                  child: GNav(
+                    gap: 8,
+                    activeColor: AppColors.white,
+                    color: AppColors.grey.withOpacity(0.5),
+                    iconSize: 24.sp,
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    tabBackgroundColor: AppColors.arsenic,
+                    backgroundColor: AppColors.arsenic,
+                    tabBorderRadius: 33,
+                    tabs: [
+                      GButton(
+                        icon: Icons.home,
+                        text: 'Home',
+                      ),
+                      GButton(
+                        icon: Icons.filter_frames,
+                        text: 'Likes',
+                      ),
+                      GButton(
+                        icon: Icons.airplane_ticket,
+                        text: 'Search',
+                      )
+                    ],
+                    selectedIndex: _selectedIndex,
+                    onTabChange: (index) {
+                      setState(() {
+                        _selectedIndex = index;
+                      });
+                    },
                   ),
-                  GButton(
-                    icon: Icons.filter_frames,
-                    text: 'Likes',
-                  ),
-                  GButton(
-                    icon: Icons.airplane_ticket,
-                    text: 'Search',
-                  )
-                ],
-                selectedIndex: _selectedIndex,
-                onTabChange: (index) {
-                  setState(() {
-                    _selectedIndex = index;
-                  });
-                },
+                ),
               ),
             ),
-          ),
-        ),
-        body: Container(
-          child: _widgetOptions.elementAt(_selectedIndex),
-        ),
+            body: Container(
+              child: _widgetOptions.elementAt(_selectedIndex),
+            ),
+          );
+        },
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:move_ticketing/network/providers/movie_provider.dart';
 import 'package:move_ticketing/pages/home/item/promo_item.dart';
+import 'package:sizer/sizer.dart';
 import 'item/movie_item.dart';
 import 'package:provider/provider.dart';
 import 'package:move_ticketing/app_define/app_style.dart';
@@ -59,6 +60,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            SizedBox(height: 8.0),
             Container(
               height: 261.0,
               child: _buildListView(),
