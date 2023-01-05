@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:move_ticketing/app_define/app_assets.dart';
 import 'package:move_ticketing/app_define/app_color.dart';
 import 'package:move_ticketing/network/providers/movie_provider.dart';
 import 'package:move_ticketing/pages/frame/frame_page.dart';
@@ -33,6 +34,12 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
     TicketPage(),
   ];
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -43,49 +50,29 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
         builder: (context, orientation, deviceType) {
           return Scaffold(
             backgroundColor: AppColors.darkGunmetal,
-            // appBar: AppBar(
-            //   elevation: 20,
-            //   title: const Text(
-            //       "Home",
-            //   ),
-            //   backgroundColor: AppColors.darkGunmetal,
-            // ),
-            bottomNavigationBar: Container(
-              child: SafeArea(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
-                  child: GNav(
-                    gap: 8,
-                    activeColor: AppColors.white,
-                    color: AppColors.grey.withOpacity(0.5),
-                    iconSize: 24.sp,
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                    tabBackgroundColor: AppColors.arsenic,
-                    backgroundColor: AppColors.arsenic,
-                    tabBorderRadius: 33,
-                    tabs: [
-                      GButton(
-                        icon: Icons.home,
-                        text: 'Home',
-                      ),
-                      GButton(
-                        icon: Icons.filter_frames,
-                        text: 'Likes',
-                      ),
-                      GButton(
-                        icon: Icons.airplane_ticket,
-                        text: 'Search',
-                      )
-                    ],
-                    selectedIndex: _selectedIndex,
-                    onTabChange: (index) {
-                      setState(() {
-                        _selectedIndex = index;
-                      });
-                    },
-                  ),
+            bottomNavigationBar: BottomNavigationBar(
+              items: [
+                BottomNavigationBarItem(
+                    icon: Image.asset(AppAssets.origin().icJamHome),
+                    label: "Home",
+                    backgroundColor: AppColors.arsenic
                 ),
-              ),
+                BottomNavigationBarItem(
+                    icon: Image.asset(AppAssets.origin().icFrame),
+                    label: "Likes",
+                    backgroundColor: AppColors.arsenic
+                ),
+                BottomNavigationBarItem(
+                    icon: Image.asset(AppAssets.origin().icTicket),
+                    label: "Search",
+                    backgroundColor: AppColors.arsenic
+                ),
+              ],
+              type: BottomNavigationBarType.shifting,
+              currentIndex: _selectedIndex,
+              selectedItemColor: AppColors.white,
+              backgroundColor: AppColors.arsenic,
+              onTap: _onItemTapped,
             ),
             body: Container(
               child: _widgetOptions.elementAt(_selectedIndex),
