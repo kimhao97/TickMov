@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:move_ticketing/app_define/app_assets.dart';
 import 'package:move_ticketing/app_define/app_color.dart';
+import 'package:move_ticketing/pages/detail/movie_detail_page.dart';
 import 'package:move_ticketing/utils/constants/api_constants.dart';
 import '../../../network/entity/movie_entity.dart';
+import 'package:move_ticketing/utils/other/navi.dart' as navi;
 
 class MovieItem extends StatelessWidget {
   final MovieEntity movie;
@@ -75,24 +77,39 @@ class MovieItem extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            color: Colors.red,
-            margin: EdgeInsets.symmetric(vertical: 0.0),
-            // alignment: Alignment.topCenter,
+          Expanded(
             child: ElevatedButton(
               style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: AppColors.darkGreen),
-                    )
-                ),
-                backgroundColor: MaterialStateProperty.all(AppColors.darkGreen),
+                backgroundColor: MaterialStateProperty.resolveWith((states) => Colors.transparent),
               ),
-              onPressed: () {},
-              child: Text("XII"),
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+              ),
+              onPressed: (() => navi.newScreen(
+                  newScreen: () => MovieDetailPage(),
+                  context: context)
+              ),
             ),
           )
+          // Container(
+          //   color: Colors.red,
+          //   margin: EdgeInsets.symmetric(vertical: 0.0),
+          //   // alignment: Alignment.topCenter,
+          //   child: ElevatedButton(
+          //     style: ButtonStyle(
+          //       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          //           RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.circular(18.0),
+          //             side: BorderSide(color: AppColors.darkGreen),
+          //           )
+          //       ),
+          //       backgroundColor: MaterialStateProperty.all(AppColors.darkGreen),
+          //     ),
+          //     onPressed: () {},
+          //     child: Text("XII"),
+          //   ),
+          // )
         ],
       ),
     );

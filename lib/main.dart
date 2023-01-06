@@ -5,7 +5,6 @@ import 'package:move_ticketing/network/providers/movie_provider.dart';
 import 'package:move_ticketing/pages/frame/frame_page.dart';
 import 'package:move_ticketing/pages/home/home_page.dart';
 import 'package:move_ticketing/pages/ticket/TicketPage.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
