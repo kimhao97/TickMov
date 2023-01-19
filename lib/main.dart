@@ -25,6 +25,7 @@ class SimpleBlocObserver extends BlocObserver {
 void main() {
   Bloc.observer = SimpleBlocObserver();
   runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
       builder: (context, child) {
         return Directionality(textDirection: TextDirection.ltr, child: child!);
       },
