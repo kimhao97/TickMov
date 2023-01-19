@@ -109,8 +109,10 @@ class _MyAppState extends State<MyApp> {
                                   backgroundColor: AppColors.arsenic
                               ),
                             ],
-                          type: BottomNavigationBarType.shifting,
+                          type: BottomNavigationBarType.fixed,
                           selectedItemColor: AppColors.white,
+                          unselectedItemColor: AppColors.grey,
+                          showUnselectedLabels: false,
                           backgroundColor: AppColors.arsenic,
                           onTap: (index) => context
                               .read<BottomNavigationBloc>()
