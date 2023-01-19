@@ -10,14 +10,18 @@ class TicketPage extends StatefulWidget {
 class _TicketPageState extends State<TicketPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      child: Text(
-          "Ticket page",
-        style: TextStyle(
-          color: Colors.white,
-        ),
-      ),
+    return StreamBuilder(
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            alignment: Alignment.center,
+            child: Text(
+              "Ticket page",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          );
+        }
     );
   }
 }

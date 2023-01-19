@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:move_ticketing/app_define/app_assets.dart';
-import 'package:move_ticketing/app_define/app_route.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({Key? key}) : super(key: key);
