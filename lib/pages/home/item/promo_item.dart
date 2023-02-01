@@ -59,22 +59,20 @@ class _PromoItemState extends State<PromoItem> {
                 bottom: 10,
                 left: 0,
                 right: 0,
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(pageList.length, (i) {
-                      return Container(
-                        margin: EdgeInsets.symmetric(horizontal: 5),
-                        width: 10,
-                        height: 10,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: _currentPageIndex == i
-                                ? AppColors.neonBlue
-                                : Colors.white),
-                      );
-                    }).toList(),
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(pageList.length, (i) {
+                    return Container(
+                      margin: EdgeInsets.symmetric(horizontal: 5),
+                      width: 10,
+                      height: 10,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _currentPageIndex == i
+                              ? AppColors.neonBlue
+                              : Colors.white),
+                    );
+                  }).toList(),
                 ),
               ),
             ],

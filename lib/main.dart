@@ -8,6 +8,7 @@ import 'package:move_ticketing/dependency_injection.dart';
 import 'package:move_ticketing/pages/frame/frame_page.dart';
 import 'package:move_ticketing/pages/home/home_bloc.dart';
 import 'package:move_ticketing/pages/home/home_page.dart';
+import 'package:move_ticketing/pages/search/search_bloc.dart';
 import 'package:move_ticketing/pages/ticket/TicketPage.dart';
 import 'package:move_ticketing/bloc/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:provider/provider.dart';

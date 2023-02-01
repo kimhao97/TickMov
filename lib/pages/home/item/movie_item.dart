@@ -8,6 +8,7 @@ import 'package:move_ticketing/utils/other/navi.dart' as navi;
 
 class MovieItem extends StatelessWidget {
   final MovieEntity movie;
+
   MovieItem({required this.movie});
 
   @override
@@ -15,7 +16,7 @@ class MovieItem extends StatelessWidget {
     return Container(
       height: 261.0,
       width: 180.0,
-      margin: EdgeInsets.only(left: 8.0, right: 8.0),
+      margin: const EdgeInsets.only(left: 8.0, right: 8.0),
       color: AppColors.arsenic,
       child: Stack(
         children: [
@@ -77,39 +78,19 @@ class MovieItem extends StatelessWidget {
               ),
             ],
           ),
-          Expanded(
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith((states) => Colors.transparent),
-              ),
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-              ),
-              onPressed: (() => navi.newScreen(
-                  newScreen: () => MovieDetailPage(),
-                  context: context)
-              ),
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.resolveWith((states) => Colors.transparent),
+            ),
+            child: Container(
+              width: double.infinity,
+              height: double.infinity,
+            ),
+            onPressed: (() => navi.newScreen(
+                newScreen: () => MovieDetailPage(),
+                context: context)
             ),
           )
-          // Container(
-          //   color: Colors.red,
-          //   margin: EdgeInsets.symmetric(vertical: 0.0),
-          //   // alignment: Alignment.topCenter,
-          //   child: ElevatedButton(
-          //     style: ButtonStyle(
-          //       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          //           RoundedRectangleBorder(
-          //             borderRadius: BorderRadius.circular(18.0),
-          //             side: BorderSide(color: AppColors.darkGreen),
-          //           )
-          //       ),
-          //       backgroundColor: MaterialStateProperty.all(AppColors.darkGreen),
-          //     ),
-          //     onPressed: () {},
-          //     child: Text("XII"),
-          //   ),
-          // )
         ],
       ),
     );
