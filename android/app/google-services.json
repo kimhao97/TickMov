@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "970142238491",
+    "project_id": "tickmov-22fc1",
+    "storage_bucket": "tickmov-22fc1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970142238491:android:36a3bc4f9284747a47f5be",
+        "android_client_info": {
+          "package_name": "com.example.move_ticketing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970142238491-keoi0751pls40eqqb35t67nljinrluc8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-Wf9j57GSBXyL7Ns1MhplyY6ibEQSo5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970142238491-keoi0751pls40eqqb35t67nljinrluc8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

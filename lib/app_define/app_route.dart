@@ -15,9 +15,14 @@ class AppRoute {
 
   ///#region ROUTE NAMES
   /// -----------------
-  static const String routeHome = '/home';
-  static const String routeFrame = '/frame';
-  static const String routeTicket = '/Ticket';
+  // static const String routeHome = '/home';
+  // static const String routeFrame = '/frame';
+  // static const String routeTicket = '/Ticket';
+
+  static const String routeHome = '/';
+  static const String routeLogin = '/login';
+  static const String routeForgotPassword = '/forgotPassword';
+  static const String routeRegister = '/register';
   ///#endregion
 
   /// App route observer
@@ -32,21 +37,21 @@ class AppRoute {
   /// Generate route for app here
   Route<dynamic>? generateRoute(RouteSettings settings) {
     switch(settings.name) {
-      case routeHome:
-        return MaterialPageRoute<dynamic>(
-            settings: settings,
-            builder: (_) => HomePage()
-        );
-      case routeFrame:
-        return MaterialPageRoute<dynamic>(
-            settings: settings,
-            builder: (_) => FramePage()
-        );
-      case routeTicket:
-        return MaterialPageRoute<dynamic>(
-            settings: settings,
-            builder: (_) => TicketPage()
-        );
+      // case routeHome:
+      //   return MaterialPageRoute<dynamic>(
+      //       settings: settings,
+      //       builder: (_) => HomePage()
+      //   );
+      // case routeFrame:
+      //   return MaterialPageRoute<dynamic>(
+      //       settings: settings,
+      //       builder: (_) => FramePage()
+      //   );
+      // case routeTicket:
+      //   return MaterialPageRoute<dynamic>(
+      //       settings: settings,
+      //       builder: (_) => TicketPage()
+      //   );
       default:
         return null;
     }

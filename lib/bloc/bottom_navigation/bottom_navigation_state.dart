@@ -21,6 +21,27 @@ class PageLoading extends BottomNavigationState {
   String toString() => 'PageLoading';
 }
 
+class LoginPageLoaded extends BottomNavigationState {
+  LoginPageLoaded();
+
+  @override
+  String toString() => 'LoginPageLoaded';
+}
+
+class ForgotPasswordPageLoaded extends BottomNavigationState {
+  ForgotPasswordPageLoaded();
+
+  @override
+  String toString() => 'ForgotPasswordPageLoaded';
+}
+
+class RegisterPageLoaded extends BottomNavigationState {
+  RegisterPageLoaded();
+
+  @override
+  String toString() => 'RegisterPageLoaded';
+}
+
 class HomePageLoaded extends BottomNavigationState {
   HomePageLoaded();
 

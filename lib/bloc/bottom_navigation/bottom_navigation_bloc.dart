@@ -17,11 +17,12 @@ class BottomNavigationBloc extends Bloc<BottomNavigationEvent, BottomNavigationS
   void _onEvent(BottomNavigationEvent event, Emitter<BottomNavigationState> emit) async {
     if (event is AppStarted) {
       this.add(PageTapped(index: this.currentIndex));
+      // emit(LoginPageLoaded());
     }
     if (event is PageTapped) {
       this.currentIndex = event.index;
       emit(CurrentIndexChanged(currentIndex: this.currentIndex));
-      PageLoading();
+      // PageLoading();
 
       if (this.currentIndex == 0) {
         emit(HomePageLoaded());

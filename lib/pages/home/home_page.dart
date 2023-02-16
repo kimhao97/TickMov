@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                       margin: const EdgeInsets.only(right: 8.0, top: 8.0),
                       child: TextButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "See All >",
                           style: TextStyle(
                             color: Colors.white,
