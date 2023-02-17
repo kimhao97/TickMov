@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late HomeBloc _movieBloc;
+  late HomeBloc _bloc;
 
   @override
   Widget build(BuildContext context) {
@@ -26,49 +26,14 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: AppColors.darkGunmetal,
         title: const Text('Discover'),
       ),
-      body: StreamBuilder(
-          stream: _movieBloc.popularMovies,
-          builder: (BuildContext context, AsyncSnapshot<List<MovieEntity>> snapshot) {
-            return ListView(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 33,
-                        margin: const EdgeInsets.only(left: 16.0, top: 8.0),
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Playing",
-                          style: mediumTextStyle(25, color: Colors.white, fontFamily: 'Niramit'),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(right: 8.0, top: 8.0),
-                      child: TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "See All >",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 8.0),
-                Container(
-                  height: 261.0,
-                  child: _buildListView(_movieBloc),
-                ),
-                PromoItem(),
-                SizedBox(height: 40.0),
-              ],
-            );
-          }),
+      body: ListView(
+        children: [
+          _buildPopularMovies(_bloc),
+          _buildNowPlayingMovies(_bloc),
+          PromoItem(),
+          SizedBox(height: 40.0),
+        ],
+      ),
     );
   }
 
@@ -76,24 +41,118 @@ class _HomePageState extends State<HomePage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    _movieBloc = CustomBlocProvider.of<HomeBloc>(context);
-    _movieBloc.getPopularMovies();
+    _bloc = CustomBlocProvider.of<HomeBloc>(context);
+    _bloc.getPopularMovies();
+    _bloc.getNowPlayingMovies();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _movieBloc.dispose();
+    _bloc.dispose();
   }
 
-  Widget _buildListView(HomeBloc bloc) {
-    return ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: bloc.popularMovies.value.length,
-        itemBuilder: (context, index) {
-          final movie = bloc.popularMovies.value[index];
-          return MovieItem(movie: movie);
-        }
+  Widget _buildPopularMovies(HomeBloc bloc) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: Container(
+                height: 33,
+                margin: const EdgeInsets.only(left: 16.0, top: 8.0),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Popular",
+                  style: mediumTextStyle(25, color: Colors.white, fontFamily: 'Niramit'),
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(right: 8.0, top: 8.0),
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  "See All >",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 8.0),
+        StreamBuilder(
+          stream: bloc.popularMovies,
+          builder: (context, snapshot) {
+            return SizedBox(
+              height: 261,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: bloc.popularMovies.value.length,
+                  itemBuilder: (context, index) {
+                    final movie = bloc.popularMovies.value[index];
+                    return MovieItem(movie: movie);
+                  }
+              ),
+            );
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildNowPlayingMovies(HomeBloc bloc) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: Container(
+                height: 33,
+                margin: const EdgeInsets.only(left: 16.0, top: 8.0),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Now playing",
+                  style: mediumTextStyle(25, color: Colors.white, fontFamily: 'Niramit'),
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(right: 8.0, top: 8.0),
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  "See All >",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 8.0),
+        StreamBuilder(
+          stream: bloc.nowPlayingMovies,
+          builder: (context, snapshot) {
+            return SizedBox(
+              height: 261,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: bloc.nowPlayingMovies.value.length,
+                  itemBuilder: (context, index) {
+                    final movie = bloc.nowPlayingMovies.value[index];
+                    return MovieItem(movie: movie);
+                  }
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 }

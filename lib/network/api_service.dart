@@ -13,6 +13,9 @@ abstract class ApiService {
   @GET('${APIConstants.POPULAR_URL}?api_key=${APIConstants.API_KEY}')
   Future<HttpResponse<DataEntity>> getPopuplarMovies();
 
+  @GET('${APIConstants.NOW_PLAYING_URL}?api_key=${APIConstants.API_KEY}')
+  Future<HttpResponse<DataEntity>> getNowPlayingMovies();
+
   @GET('/${APIConstants.SEARCH_URL}?api_key=${APIConstants.API_KEY}&query={queries}&page=1')
   Future<HttpResponse<DataEntity>> searchMovies(@Path("queries") String queries);
 }

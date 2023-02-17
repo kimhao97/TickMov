@@ -45,6 +45,30 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<HttpResponse<DataEntity>> getNowPlayingMovies() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<DataEntity>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/movie/now_playing?api_key=1773fd4bacdaef5a98eb79a383b4fbe1',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataEntity.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
   Future<HttpResponse<DataEntity>> searchMovies(queries) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

@@ -20,6 +20,17 @@ class MovieRepositoryImpl implements MovieRepository {
   }
 
   @override
+  Future<State> getNowPlayingMovies() async {
+    final httpResponse = await apiService.getNowPlayingMovies();
+    if (httpResponse.response.statusCode == 200) {
+      return State<List<MovieEntity>>.success(httpResponse.data.movies);
+    }
+    else {
+      return State<String>.error(httpResponse.response.statusCode.toString());
+    }
+  }
+
+  @override
   Future<State> getMoviesByName(String queries) async {
     final httpResponse = await apiService.searchMovies(queries);
     if (httpResponse.response.statusCode == 200) {
