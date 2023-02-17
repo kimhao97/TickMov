@@ -23,12 +23,15 @@ class HomeBloc implements BaseBloc {
     @override
     void dispose() {
         popularMovies.close();
+        nowPlayingMovies.close();
     }
 
     void getPopularMovies() async {
         final state = await _movieRepository.getPopularMovies();
         if (state is SuccessState) {
             popularMovies.sink.add(state.value);
+        } else if (state is ErrorState) {
+            popularMovies.sink.addError(state.msg);
         }
         // _state.value.movies.addAll(movies);
     }
@@ -37,6 +40,8 @@ class HomeBloc implements BaseBloc {
         final state = await _movieRepository.getNowPlayingMovies();
         if (state is SuccessState) {
             nowPlayingMovies.sink.add(state.value);
+        } else if (state is ErrorState) {
+            nowPlayingMovies.sink.addError(state.msg);
         }
     }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:move_ticketing/network/entity/movie_entity.dart';
 import 'package:move_ticketing/pages/search/search_bloc.dart';
 import '../../app_define/app_color.dart';
 import '../../bloc/bloc_provider.dart';
@@ -54,9 +55,10 @@ class _SearchPageState extends State<SearchPage> {
         child: StreamBuilder(
           // initialData: _searchBloc.movieList,//searchBloc.movies.value,
           stream: _searchBloc.movieList, //_searchBloc.movies,
-          builder: (context, snapshot) {
-            if (snapshot.data != null) {
-              if (snapshot.data!.isEmpty) {
+          builder: (context, AsyncSnapshot<List<MovieEntity>> snapshot) {
+            if (snapshot.hasData) {
+              final movies = snapshot.data!;
+              if (movies.isEmpty) {
                 return Container(
                     alignment: Alignment.center,
                     child: const Text(
@@ -70,12 +72,12 @@ class _SearchPageState extends State<SearchPage> {
               }
               return ListView.separated(
                 padding: const EdgeInsets.all(8.0),
-                itemCount: snapshot.data!.length,//_searchBloc.movies.value.length,
+                itemCount: movies.length,//_searchBloc.movies.value.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     height: 120,
                     color: AppColors.arsenic,
-                    child: SearchMovieItem(movie: snapshot.data![index]),
+                    child: SearchMovieItem(movie: movies[index]),
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) => const Divider(),

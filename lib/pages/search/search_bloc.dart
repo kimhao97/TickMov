@@ -10,6 +10,7 @@ class SearchBloc implements BaseBloc {
 
   final movies = BehaviorSubject<List<MovieEntity>>.seeded([]);
   final _query = PublishSubject<String>();
+  Function(String) get changeQuery => _query.sink.add;
 
   Stream<List<MovieEntity>> get movieList => _query.stream
       .debounceTime(const Duration(milliseconds: 300))
@@ -26,8 +27,6 @@ class SearchBloc implements BaseBloc {
         sink.addError((state as ErrorState).msg);
       }
     });
-
-  Function(String) get changeQuery => _query.sink.add;
 
   SearchBloc() {
     _query.stream

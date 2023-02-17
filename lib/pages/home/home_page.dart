@@ -84,20 +84,24 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         const SizedBox(height: 8.0),
-        StreamBuilder(
+        StreamBuilder<List<MovieEntity>>(
           stream: bloc.popularMovies,
-          builder: (context, snapshot) {
-            return SizedBox(
-              height: 261,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: bloc.popularMovies.value.length,
-                  itemBuilder: (context, index) {
-                    final movie = bloc.popularMovies.value[index];
-                    return MovieItem(movie: movie);
-                  }
-              ),
-            );
+          builder: (context, AsyncSnapshot<List<MovieEntity>> snapshot) {
+            if (snapshot.hasData) {
+              final movies = snapshot.data!;
+              return SizedBox(
+                height: 261,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: movies.length,
+                    itemBuilder: (context, index) {
+                      final movie = movies[index];
+                      return MovieItem(movie: movie);
+                    }
+                ),
+              );
+            }
+            return Container();
           },
         ),
       ],
@@ -138,18 +142,22 @@ class _HomePageState extends State<HomePage> {
         const SizedBox(height: 8.0),
         StreamBuilder(
           stream: bloc.nowPlayingMovies,
-          builder: (context, snapshot) {
-            return SizedBox(
-              height: 261,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: bloc.nowPlayingMovies.value.length,
-                  itemBuilder: (context, index) {
-                    final movie = bloc.nowPlayingMovies.value[index];
-                    return MovieItem(movie: movie);
-                  }
-              ),
-            );
+          builder: (context, AsyncSnapshot<List<MovieEntity>> snapshot) {
+            if (snapshot.hasData) {
+              final movies = snapshot.data!;
+              return SizedBox(
+                height: 261,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: movies.length,
+                    itemBuilder: (context, index) {
+                      final movie = movies[index];
+                      return MovieItem(movie: movie);
+                    }
+                ),
+              );
+            }
+            return Container();
           },
         ),
       ],

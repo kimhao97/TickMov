@@ -121,7 +121,7 @@ class _SignupPageState extends State<SignupPage> {
             child: StreamBuilder(
               stream: _emailSignupBloc.isLoading,
               builder: (context, snapshot) {
-                if (snapshot.data != null) {
+                if (snapshot.hasData) {
                   if (snapshot.data == true) {
                     return const CircularProgressIndicator(
                       color: AppColors.arsenic,

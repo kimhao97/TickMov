@@ -239,8 +239,8 @@ class _LoginPageState extends State<LoginPage> {
           Center(
             child: StreamBuilder(
               stream: _emailLoginBloc.isLoading,
-              builder: (context, snapshot) {
-                if (snapshot.data != null) {
+              builder: (context, AsyncSnapshot<bool> snapshot) {
+                if (snapshot.hasData) {
                   if (snapshot.data == true) {
                     return const CircularProgressIndicator(
                       color: AppColors.arsenic,

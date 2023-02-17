@@ -22,7 +22,6 @@ class _PromoItemState extends State<PromoItem> {
             Expanded(
               child: Container(
                 height: 33,
-                // width: double.infinity,
                 margin: const EdgeInsets.only(left: 16.0, top: 42.0),
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -40,7 +39,7 @@ class _PromoItemState extends State<PromoItem> {
         Container(
           height: 161.0,
           width: double.infinity,
-          margin: EdgeInsets.only(left: 16, right: 16, top: 16),
+          margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
           color: Colors.red,
           child: Stack(
             children: [
