@@ -4,6 +4,7 @@ import 'package:move_ticketing/data/user/firebase_user_repository.dart';
 import 'package:move_ticketing/data/user/firebase_user_repository_impl.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../bloc/bloc_provider.dart';
+import '../../generated/l10n.dart';
 import 'login_state.dart';
 import 'dart:developer' as dev;
 
@@ -26,7 +27,7 @@ class EmailLoginBloc implements BaseBloc {
     if (_isValidEmail(value)) {
       sink.add(value);
     } else {
-      sink.addError('Please enter the valid email!');
+      sink.addError(S.current.please_enter_the_valid_email);
     }
   });
 
@@ -34,7 +35,7 @@ class EmailLoginBloc implements BaseBloc {
     if (_isValidPassword(value)) {
       sink.add(value);
     } else {
-      sink.addError('Please enter the valid password!');
+      sink.addError(S.current.please_enter_the_valid_password);
     }
   });
 

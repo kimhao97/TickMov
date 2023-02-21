@@ -1,0 +1,9 @@
+{
+  "password_at_least_6_characters": "Password at least 6 characters",
+  "invalid_email_address": "Invalid email address",
+  "forgot_password": "forgot password?",
+  "remember_me": "Remember me",
+  "do_not_have_an_accounts": "Don't have an accounts?",
+  "please_enter_the_valid_email": "Please enter the valid email!",
+  "please_enter_the_valid_password": "Please enter the valid password!"
+}

@@ -10,6 +10,7 @@ import 'package:move_ticketing/pages/signup/signup_bloc.dart';
 import 'package:move_ticketing/pages/signup/signup_page.dart';
 import 'package:move_ticketing/utils/other/navi.dart' as navi;
 import '../../bloc/bloc_provider.dart';
+import '../../generated/l10n.dart';
 import '../../widgets/input_text_field.dart';
 
 class LoginPage extends StatefulWidget {
@@ -83,8 +84,8 @@ class _LoginPageState extends State<LoginPage> {
                                 });
                               },
                             ),
-                            const Text(
-                              "Remember me",
+                            Text(
+                              S.of(context).remember_me,
                               style: TextStyle(
                                 color: AppColors.grey,
                                 fontSize: 14,
@@ -94,8 +95,8 @@ class _LoginPageState extends State<LoginPage> {
                             const Expanded(child: SizedBox()),
                             TextButton(
                               onPressed: () {},
-                              child: const Text(
-                                "forgot password?",
+                              child: Text(
+                                S.of(context).forgot_password,
                                 style: TextStyle(
                                   color: AppColors.grey,
                                   fontSize: 14,
@@ -203,8 +204,8 @@ class _LoginPageState extends State<LoginPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text(
-                                  "Don't have an accounts?",
+                                Text(
+                                  S.of(context).do_not_have_an_accounts,
                                   style: TextStyle(
                                     color: AppColors.grey,
                                     fontSize: 14,
@@ -246,7 +247,6 @@ class _LoginPageState extends State<LoginPage> {
                       color: AppColors.arsenic,
                     );
                   } else {
-                    // Navigator.of(context).pop();
                     final user = _emailLoginBloc.user.value;
                     if ( user != null) {
                       SchedulerBinding.instance.addPostFrameCallback((_) {
@@ -320,6 +320,7 @@ class _EmailInput extends StatelessWidget {
                   //   return null;
                   // }
                   // if (email == null || email.isEmpty) {
+                  //   return "Empty email";
                   //   return "Empty email";
                   // }
                   // return "Invalid email address";
