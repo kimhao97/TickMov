@@ -10,6 +10,7 @@ import 'package:move_ticketing/pages/home/home_bloc.dart';
 import 'package:move_ticketing/pages/home/home_page.dart';
 import 'package:move_ticketing/pages/login/login_page.dart';
 import 'package:move_ticketing/pages/search/search_bloc.dart';
+import 'package:move_ticketing/pages/sideMenu/side_menu_page.dart';
 import 'package:move_ticketing/pages/ticket/TicketPage.dart';
 import 'package:move_ticketing/bloc/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:provider/provider.dart';
@@ -47,6 +48,7 @@ class _MyAppState extends State<MyApp> {
             child: Sizer(
               builder: (context, orientation, deviceType) {
                 return Scaffold(
+                  drawer: SideMenuPage(),
                   backgroundColor: AppColors.darkGunmetal,
                   body: BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
                     builder: (BuildContext context, BottomNavigationState state) {

@@ -10,7 +10,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MaterialApp(
-
       debugShowCheckedModeBanner: false,
       builder: (context, child) {
         return Directionality(textDirection: TextDirection.ltr, child: child!);

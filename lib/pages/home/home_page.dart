@@ -22,6 +22,22 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: AppColors.darkGunmetal,
       appBar: AppBar(
+        leading: ElevatedButton(
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                  (Set<MaterialState> states) {
+                return AppColors.darkGunmetal;
+              },
+            ),
+          ),
+          child: const Icon(
+              Icons.menu,
+            color: AppColors.white,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: AppColors.darkGunmetal,
         title: const Text('Discover'),
