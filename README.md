@@ -1,16 +1,10 @@
 # move_ticketing
 
-A new Flutter project.
+A new Flutter project. Example with BloC using RxDart.
 
-## Getting Started
+## Screenshots
+<img src="screenshot/login_1.png" height="300em" />&nbsp;<img src="screenshot/login_2.png" height="300em" />
 
-This project is a starting point for a Flutter application.
+<img src="screenshot/side_menu.png" height="300em" />&nbsp;<img src="screenshot/home_1.png" height="300em" />&nbsp;<img src="screenshot/home_2.png" height="300em" />
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="screenshot/search_1.png" height="300em" />&nbsp;<img src="screenshot/search_2.png" height="300em" />
